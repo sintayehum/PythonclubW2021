@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, Pythontype, Club
 from django.urls import reverse_lazy
 from.forms Import productForm
+from django.contrib.auth.descriptions import login_required
 # Create your views here.
 def index(request):
     return render(request,'Club/index.html')
@@ -14,8 +15,9 @@ def productDetail(request, id):
     product=get_object_or_404(product, pk=id)
     return render(request,'club/productdetail,html', {'product' : product})
 
-    def newProduct(request):
-        form=ProductForm
+@longin_required
+def newProduct(request):
+    form=ProductForm
 
         if request. method=='post':
             from=ProductForm(request.post)
@@ -26,5 +28,11 @@ def productDetail(request, id):
         else:
             form=ProductForm()
         return render(request, 'club/newproduct.html', {'form': form})
+
+def loginmessage(request):
+    return render(request, 'club/loginmessage.html')
+
+def logoumessage(request):
+    return render(request, 'club/logoumessage.html')
             
 
