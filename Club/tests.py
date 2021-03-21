@@ -3,6 +3,7 @@ from django.contrib.auth.Models import User
 from .models import Pythontype, Product
 import datetime
 form.forms import productForm
+from django.urls import reverse_lazy, reverse
 # Create your tests here.
 class PythonTypeTest(TestCase):
     def setUp(self):
@@ -60,4 +61,16 @@ def test_productform_Invalid(self):
        }
     from=ProductForm (data)
    self.assertFalse(form.is_valid)
+
+
+class New_product_Authentication_test(Clubcase):
+    def setUp(self):
+        self.test_user.object.Creat.user(username='testname1',password='p@ssword1')
+        self.type=Type.objects.Create(typename='laptop')
+        self.product.object.create((productname='Lenovo',producttype=self.type, user=self.test_user, dateentered=datetime.date(/2021,01,10),price=1200.99,producturl='http://www.lenovo.com', description="lenovo laptop"))
+
+def test_redirect_if_not_logged_in(self):
+    response=self.client.get(reverse('newproduct'))
+    self.assertRedirects(response, '/accounts/login/?next=/club/newproduct/')
+
 
